@@ -16,8 +16,8 @@ wrapLinks ( expertise, expertise_image_links );
 
 // Case Studies section ========================
 
-var caseStudies = document.querySelectorAll( '#case-studies .esg-media-cover-wrapper' );
-var caseStudiesButtonLinks = document.querySelectorAll( '#case-studies .eg-henryharrison-element-2' );
+var caseStudies = document.querySelectorAll( '.esg-grid .esg-media-cover-wrapper' );
+var caseStudiesButtonLinks = document.querySelectorAll( '.esg-grid .eg-jefferson-element-0' );
 var caseStudiesImageLinks = [];
 
 getLinks( caseStudiesButtonLinks, caseStudiesImageLinks );
@@ -42,6 +42,7 @@ function wrapLinks( items, imageArray ) {
 		// create wrapper container
 		var link = document.createElement('a');
 		link.href = imageArray[i];
+		link.className = "esg-media-cover-wrapper-a";
 		link.style.width = "100%";
 		link.style.height = "100%";
 	

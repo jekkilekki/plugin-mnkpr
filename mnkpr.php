@@ -41,29 +41,22 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-/**
- * Enqueue the plugin's JavaScript files.
- */
-function mnkpr_enqueue_scripts() {
-
-	/* Wraps all requires images in an anchor tag - to remove dependence on buttons. */
-	wp_enqueue_script( 'mnkpr-image-anchor-wrap', plugins_url( '/js/image-wrap.js', __FILE__ ), array(), '20200128', true );
-
-}
-add_action( 'wp_enqueue_scripts', 'mnkpr_enqueue_scripts' );
-
-/* Loads individual Case Study on home page when clicked (optional). */
-require_once 'inc/mnkpr-front-case-studies.php';
+// Load Functions and Plugin Options files.
+require_once 'inc/functions.php';
+// require_once 'inc/plugin-options.php';
 
 /**
- * Undocumented function
+ * Handles the backend Admin Menu options for certain users.
  */
-function mnkpr_backend() {
+function mnkpr_backend_admin_menus() {
 	/* Disables backend Admin menu options for certain users. */
 	require_once 'inc/mnkpr-back-admin-menu.php';
 }
-add_action( 'plugins_loaded', 'mnkpr_backend' );
+add_action( 'plugins_loaded', 'mnkpr_backend_admin_menus' );
+
+/* Loads individual Case Study on home page when clicked (optional). */
+// require_once 'inc/mnkpr-front-case-studies.php';
